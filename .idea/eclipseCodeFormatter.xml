@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EclipseCodeFormatterProjectSettings">
+    <option name="selectedGlobalProfile">
+      <Settings>
+        <option name="formatter" value="ECLIPSE" />
+        <option name="id" value="1632582814880" />
+        <option name="importOrderConfigFilePath" value="C:/templates/eclipse.importorder" />
+        <option name="importOrderFromFile" value="true" />
+        <option name="name" value="PSI_" />
+        <option name="pathToConfigFileJava" value="C:/templates/codeformatter.xml" />
+        <option name="selectedJavaProfile" value="PSI" />
+      </Settings>
+    </option>
+  </component>
+</project>
