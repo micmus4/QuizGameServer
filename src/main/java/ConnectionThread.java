@@ -48,22 +48,30 @@ public class ConnectionThread extends Thread
             int pauseCount = 0; // if it raises to 3, player has to pause 1 question.
             for( Question question : questions )
             {
-                clientWriter.println( "Question: " + question.getContent() );
-                String clientAnswer = clientReader.readLine();
-                if( clientAnswer.equalsIgnoreCase( question.getCorrectAnswer() ) )
+                if( pauseCount == 3 )
                 {
-                    clientWriter.println( "Correct answer!" );
-                    points += 1;
+                    clientWriter.println( "Question: " + question.getContent() + " ||| YOU HAVE TO PAUSE THIS QUESTION" );
                     pauseCount = 0;
                 }
                 else
                 {
-                    clientWriter.println( "Wrong answer..." );
-                    points -= 2;
-                    pauseCount++;
+                    clientWriter.println( "Question: " + question.getContent() );
+                    String clientAnswer = clientReader.readLine();
+                    if( clientAnswer.equalsIgnoreCase( question.getCorrectAnswer() ) )
+                    {
+                        clientWriter.println( "Correct answer!" );
+                        points += 1;
+                        pauseCount = 0;
+                    }
+                    else
+                    {
+                        clientWriter.println( "Wrong answer..." );
+                        points -= 2;
+                        pauseCount++;
+                    }
                 }
-            }
-            System.out.println( "You've got " + points + " points." );
+                }
+            clientWriter.println( "You've got " + points + " points." );
         }
         catch( IOException e )
         {

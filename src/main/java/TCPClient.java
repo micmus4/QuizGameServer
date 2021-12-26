@@ -24,13 +24,21 @@ public class TCPClient
             PrintWriter serverWriter = new PrintWriter( clientSocket.getOutputStream(), true );
 
             establishHandshakeWithServer( scanner, serverReader, serverWriter );
-            while( true )
+            for(int i = 0; i < 5; i++)
             {
-                System.out.println( serverReader.readLine() );
+                String questionOrPause = serverReader.readLine();
+                if( questionOrPause.contains( "PAUSE" ) )
+                {
+                    System.out.println( questionOrPause );
+                    continue;
+                }
+                System.out.println( questionOrPause );
+                System.out.print( "ANSWER: " );
                 String answer = scanner.nextLine();
                 serverWriter.println( answer );
                 System.out.println( serverReader.readLine() );
             }
+            System.out.println( serverReader.readLine() );
         }
         catch ( IOException e )
         {
